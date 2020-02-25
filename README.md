@@ -1,6 +1,7 @@
 Spring Board
 ==============
-Spring MVC 패턴으로 구성된 게시판 만들기
+Spring boot로 게시판 만들기
 ------------------------------------
+[spring boot 설명](SpringBoot.md)<br>
 
 
