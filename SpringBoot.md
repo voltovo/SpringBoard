@@ -36,4 +36,47 @@ Groovy는 스크립트 언어로 소스 코드 그대로 실행된다. Java와 �
 * WEB-INF 와 META-INF 구조로만 생성이 가능하다.
 * 서버로만 실행이 가능하다.
 
+#### 시스템 요구 사항
+* Java 8 / Java 11과 호환 가능
+* maven - 3.3 이상 / gradle - 4.4 이상
+* 내장 서블릿 컨테이너 지원
 
+|이름|서블릿버전|
+|:--:|:--|
+|tomcar 9.0|4.0|
+|jetty 9.4|3.1|
+|undertow 2.0|4.0|
+
+## 3. 스프링 부트 설치
+Java SDK v1.8 이상 필요.<br>
+* cmd창에 '$ java -version'으로 버전 확인 가능
+
+#### 3.1 maven 설치
+Spring Boot는 Apache Maven 3.3이상과 호환된다.<br>
+일반적으로 Maven POM 파일은 'spring-boot-starter-parent'프로젝트에서 상속되며 하나 이상의 "Starters"에 대한 종속성을 선언한다.
+<pre>
+//Spring Boot 에서 기본값 상속
+< parent>
+    < groupId>org.springframework.boot< /groupId>
+    < artifactId>spring-boot-starter-parent< /artifactId>
+    < version>2.1.6.RELEASE< /version>
+< /parent>
+
+//웹 애플리케이션에 대한 일반적인 종속성 추가
+< dependencies>
+    < dependency>
+        < groupId>org.springframework.boot< /groupId>
+        < artifactId>spring-boot-starter-web< /artifactId>
+    < /dependency>
+< /dependencies>
+
+//실행 가능한 jar 패키지 
+	< build> 
+		< plugins> 
+			< plugin> 
+				< groupId> org.springframework.boot </ groupId> 
+				< artifactId>spring-boot-maven-plugin </ artifactId> 
+			< /plugin> 
+		< /plugins>
+	< /build>
+</pre>
