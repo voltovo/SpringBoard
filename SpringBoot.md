@@ -74,8 +74,8 @@ Spring Boot는 Apache Maven 3.3이상과 호환된다.<br>
 	< build> 
 		< plugins> 
 			< plugin> 
-				< groupId> org.springframework.boot </ groupId> 
-				< artifactId>spring-boot-maven-plugin </ artifactId> 
+				< groupId> org.springframework.boot < /groupId> 
+				< artifactId>spring-boot-maven-plugin < /artifactId> 
 			< /plugin> 
 		< /plugins>
 	< /build>
