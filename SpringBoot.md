@@ -80,3 +80,12 @@ Spring Boot는 Apache Maven 3.3이상과 호환된다.<br>
 		< /plugins>
 	< /build>
 </pre>
+
+#### 3.2 gradle 설치
+gradle을 사용해서 spring boot에 종속성을 선언 할 수 있다. 일반적으로 프로젝트는 하나 이상의 starter에 종속성을 선언한다. spring boot는 의존성 선언을 단순화하고 실행 가능한 jar을 만드는데 사용할 수 있는 유용한 gradle 플러그인을 제공.
+* gradle wrapper는 프로젝트를 빌드해야 할 때 gradle을 얻는 좋은 방법을 제공한다. 빌드 프로세스를 부트 스트랩하기 위해 코드와 함께 커밋하는 작은 스크립트 및 라이브러리이다.
+
+#### 3.3 spring boot CLI 설치
+spring Boot CLI(Command Line Interface)은 spring으로 신속하게 프로토 타입을 작성하는데 사용한다.<br>
+Groovy 스크립트를 실행할 수 있다. 이 점은 많은 상용구 코드없이 친숙한 java 유사 구문을 가지고 있음을 의미.
+
