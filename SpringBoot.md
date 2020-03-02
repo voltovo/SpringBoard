@@ -89,3 +89,27 @@ gradle을 사용해서 spring boot에 종속성을 선언 할 수 있다. 일반
 spring Boot CLI(Command Line Interface)은 spring으로 신속하게 프로토 타입을 작성하는데 사용한다.<br>
 Groovy 스크립트를 실행할 수 있다. 이 점은 많은 상용구 코드없이 친숙한 java 유사 구문을 가지고 있음을 의미.
 
+#### 3.4 project 설치 후 각 폴더의 의미
+* src/main/java : 일반적인 자바 소스
+* src/test/java : jUnit 기반의 테스트 케이스
+* src/main/resources : xml, properties <br>
+기존의 메이븐 기반 프로젝트와 다른점.<br>
+src/main/resources 를 보면 xml 파일이 아닌 static, templates 폴더가 있다<br>
+* static 폴더 : HTML 같은 정적인 웹리소스 저장
+* templates 폴더 : 타임리프 같은 템플릿 기반의 웹리소스 저장
+* application.properties 파일 : 프로젝트 전체에서 사용할 프로퍼티 정보들
+
+#### 3.5 project main class run
+src/main/java 소스 폴더에 '프로젝트 이름 + Application.java' 파일이 있다.<br>
+실행시키고 브라우저에 기본포트인 http://localhost:8080/ 을 입력하면 아마도 다음과 같이 뜰 것이다.<br>
+![Alt Text](./img/firstRunPage.jpg)
+내장 톰캣이 인식해야 하는 index.html , index.jsp가 없기 때문이다.<br>
+* 프로젝트 생성 시 'web' 스타터를 추가 할 때 웹 프로젝트 환경에 최적화된 라이브러리들을 등록해 준다. 이때 톰캣 라이브러리도 같이 다운된다.<br>
+
+#### 3.6 WebApplicationType
+* NONE : 웹으로 동작하지 않는다.
+* SERVLET : 기존의 스프링 MVC를 기반으로 웹 애플리케이션을 구동
+* REACTIVE : 스프링 5.0에 추가된 비동기 처리와 논블로킹 입출력을 지원하는 웹플럭스 적용
+
+
+
