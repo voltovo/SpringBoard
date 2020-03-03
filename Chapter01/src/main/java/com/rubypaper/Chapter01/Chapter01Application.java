@@ -4,8 +4,10 @@ import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication //애플리케이션 시작 클래스를 의미
+@ComponentScan(basePackages = "com.rubypaper")
 public class Chapter01Application {
 
 	public static void main(String[] args) {
