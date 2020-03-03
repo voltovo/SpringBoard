@@ -10,7 +10,7 @@ Controller가 요청을 처리한 후에 응답을 DispatcherServlet으로 반�
 DispatcherServlet은 View를 사용자에게 반환
 * Controller - Data <br>
 Data를 반환해야 하는 경우. @ResponseBody를 활용해서 Json 형태로 데이터를 반환.
-![Alt Text](./img/controller_Data.jpg)<br>
+![Alt Text](./img/controller_data.jpg)<br>
 * RestController<br>
 Spring MVC Controller에 @ResponseBody가 추가된것. Json/Xml 형태로 객체 데이터를 반환하는 것이 주용도. Restful 웹서비스의 생산을 단순화 하기 위해 만들어짐.
 ![Alt Text](./img/RestController.jpg)<br>
