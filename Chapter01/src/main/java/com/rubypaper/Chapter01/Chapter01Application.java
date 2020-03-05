@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication //애플리케이션 시작 클래스를 의미
+//Scan package 직접 지정
 @ComponentScan(basePackages = "com.rubypaper")
 public class Chapter01Application {
 
