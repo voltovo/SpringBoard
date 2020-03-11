@@ -8,7 +8,8 @@ import org.springframework.core.env.Environment;
 /**
  * PropertiesTest
  */
-@SpringBootTest
+@SpringBootTest(classes = BoardController.class,
+                    properties = {"author.name=Suman", "author.age=34", "author.nation=Korea"})
 public class PropertiesTest {
 
     @Autowired
