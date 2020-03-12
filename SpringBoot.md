@@ -122,5 +122,37 @@ src/main/java 소스 폴더에 '프로젝트 이름 + Application.java' 파일�
 3. 그림과 같이 devTools 선택 > 엔터 > 저장 (만약 충돌이 나서 선택하라고 하는 경고 메세지가 뜬다면 덮어쓰기 하면 된다.)<br>
 ![Alt Text](./img/devTools.jpg)<br>
 
+#### 4.3 SpringBoot Test
+#### 4.3.1 Mock 객체로 테스트하기
+목(Mock) : 테스트를 위해 만든 모형<Br>
+모킹 (Mocking) : 테스트를 위해 실제 객체와 비슷한 모의 객체를 만드는 것<br>
+목업 (Mock-up) : 모킹한 객체를 메모리에서 얻어내는 과정<br>
+웹 애플리케이션은 복잡한 절차가 필요해서 자주 테스트 하기가 어렵다. 이렇기 때문에 객체와 비슷한 가짜 객체를 만들어서 
+테스트에 필요한 기능만 가지도록 모킹해서 쉽게 테스트 하는것이 목적이다.<br>
+실제 컨트롤러를 테스트하려면 서블릿 컨테이너 구동, DispatcherServlet 객체가 메모리에 올라가야 한다.<Br>
+하지만 서블릿 컨테이너를 모킹하면 테스트용 모형 컨테이너를 사용하기 때문에 간단하게 컨트롤러를 테스트 할 수 있다.<br>
 
+#### 4.3.2 @WebMvcTest
+@Controller, @RestController가 설정된 클래스들을 찾아 메모리에 생성한다.<br>
+하지만, @service와 @Repository가 붙은 객체들은 테스트 대상이 아닌것으로 처리된다.
+<pre>
+@WebMvcTest
+public class BoardControllerTest{
+
+}
+</pre>
+
+#### 4.3.3 @AutoConfigureMockMvc
+ @WebMvcTest 와 비슷하게 사용할 수 있는 어노테이션<br>
+ @SpringBootTest 에는 테스트를 지원하는 webEnvironment 속성이 있다. 기본값은 MOCK로 설정된다.<br>
+ 이 설정에 의해서 서블릿 컨테이너가 모킹된다. (테스트 케이스 실행 시 서블릿 컨테이너를 구동하지 않는다.)<br>
+ 모킹한 객체를 의존성 주입 받으려면 @AutoConfigureMockMvc를 클래스 위에 추가해야 한다.
+ <pre>
+@SpringBootTest(webEnvironment = WebEnvironment.MOCK)
+@AutoConfigureMockMvc
+public class BoardControllerTest {
+ </pre>
+* WebMvcTest 와 차이점<Br>
+@AutoConfigureMockMvc는 컨트롤러뿐 아니라 테스트 대상이 아닌 @Service나 @Repository가 붙은 객체들도 모두 메모리에 올린다.<br>
+간단한 테스트를 하기 위해서는 @WebMvcTest를 사용해야 한다.<br>
 
