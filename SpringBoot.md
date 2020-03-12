@@ -199,14 +199,11 @@ andExpect(redirectedUrl("/index"))
 
 |상수|의미|
 |:---|:---|
-|MOCK|모킹된 서블릿 컨테이너를 제공하기 때문에 내장 톰캣이 구동되지 않는다.<br>
-@AutoConfigureMockMvc 어노테이션을 사용하여 MockMvc객체를 주입 받아 <br>
-테스트에 사용할 수 있다.|
-|RANDOM_PORT|랜덤한 포트로 내장 톰캣을 구동하여 서블릿 컨테이너를 초기화한다. 정상적인<br>
-서블릿 테스트가 가능하다.|
-|DEFINED_PORT|RANDOM_PORT와 동일하지만, application.properties 파일에 설정된 서버<br>
-포트를 사용한다.|
+|MOCK|모킹된 서블릿 컨테이너를 제공하기 때문에 내장 톰캣이 구동되지 않는다.<br>@AutoConfigureMockMvc 어노테이션을 사용하여 MockMvc객체를 주입 받아 <br>테스트에 사용할 수 있다.|
+|RANDOM_PORT|랜덤한 포트로 내장 톰캣을 구동하여 서블릿 컨테이너를 초기화한다. 정상적인<br>서블릿 테스트가 가능하다.|
+|DEFINED_PORT|RANDOM_PORT와 동일하지만, application.properties 파일에 설정된 서버<br>포트를 사용한다.|
 |NONE|서블릿 기반의 환경 자체를 구성하지 않는다.|
+
 
 
 
