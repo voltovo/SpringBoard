@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 /**
  * BoardControllerTest
  */
+@RunWith(SrpingRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 public class BoardControllerTest {
@@ -37,10 +38,16 @@ public class BoardControllerTest {
         .andDo(print());
     } */
 
-    @Test
+    /* @Test
     public void testHello() throws Exception{
         String result = restTemplate.getForObject("/hello?name=둘리", String.class);
         assertEquals("Hello : 둘리", result);
+    } */
+
+    @Test
+    public void testGetBoard()throws Exception{
+        BoardVO board = restTemplate.getForObject("/getBoard", BoardVO.class);
+        assertEquals("테스터", board.getWriter());
     }
     
 }
