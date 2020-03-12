@@ -156,3 +156,43 @@ public class BoardControllerTest {
 @AutoConfigureMockMvc는 컨트롤러뿐 아니라 테스트 대상이 아닌 @Service나 @Repository가 붙은 객체들도 모두 메모리에 올린다.<br>
 간단한 테스트를 하기 위해서는 @WebMvcTest를 사용해야 한다.<br>
 
+#### 4.3.4 MockMvc
+* perform()<br>
+MockMvc가 제공하는 perform()을 사용하면 서버에서 url을 요청하듯 컨트롤러를 실행시킬 수 있다.<br>
+MockMvcRequestBuilders의 정적메소드를 이용해서 생성된 RequestBuilder 객체를 인자로 받는다<br>
+perform()로 요청을 전송하면, ResultActions객체를 리턴 받는다.<br>
+ResultActions는 응답 결과를 검증할 수 있는 andExpect()메소드를 제공한다.<br>
+컨트롤러의 동작을 테스트하기 위해서는 요청도 중요하지만, 컨트롤러가 어떤 결과를 전송했는지 검증하는 것이 가장 중요하다. 서버의 응답 결과는 MockMvcResultMatchers 객체의 메소드를 이용해서 검증 할 수 있다.<br>
+
+#### 4.3.5 MockMvcResultMatchers
+status()메소드로 응답 상태 코드를 검증 할 수 있다.<br>
+|메소드|설명|
+|:--|:--|
+|isOk()|응답 상태 코드가 정상적인 처리에 해당하는 200인지 확인|
+|isNotFound()|응답 상태 코드가 404 Not Found인지 확인|
+|isMethodNotAllowed()|응답 상태 코드가 메소드 불일치에 해당하는 405인지 확인|
+|isInternalServerError()|응답 상태 코드가 예외 발생에 해당하는 500인지 확인|
+|is(int status)|몇번 응담 상태코드가 설정되어 있는지 확인<br>예) is(200),is(400)|
+
+* 컨트롤러가 리턴하는 뷰를 검증 할 때는 view() 사용<br>
+<pre>
+andExpect(view().name("hello"))
+</pre>
+컨트롤러가 리턴한 뷰 이름이 hello인지 검증한다.<br>
+만약 요청 처리 결과가 리다이렉트 응답이라면
+<pre>
+andExpect(redirectedUrl("/index"))
+</pre>
+
+* model()<br>
+컨트롤러에서 저장한 모델의 정보들을 검증하고 싶으면 사용한다.<br>
+
+|메소드|설명|
+|:--|:--|
+|attributeExists(String name)|name에 해당하는 데이터가 Model에 포함되어 있는지 검증|
+|atrribute(String name,Object value)|name에 해당하는 데이터가 value객체인지 검증|
+
+* andDO(ResultHandler handler)<br>
+테스트 진행할 때 실제로 생성된 요청과 응답 메세지를 모두 확인하고 싶을 때 사용
+
+
