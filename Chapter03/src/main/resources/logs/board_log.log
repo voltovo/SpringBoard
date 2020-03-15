@@ -1,0 +1,8 @@
+2020:03:15 14:51:34.719 WARN  --- [restartedMain] com.rubypaper.LoggingRunner : WARN 로그 메세지 
+2020:03:15 14:51:34.719 ERROR --- [restartedMain] com.rubypaper.LoggingRunner : ERROR 로그 메세지 
+2020:03:15 14:53:44.317 WARN  --- [restartedMain] com.rubypaper.LoggingRunner : WARN 로그 메세지 
+2020:03:15 14:53:44.319 ERROR --- [restartedMain] com.rubypaper.LoggingRunner : ERROR 로그 메세지 
+2020:03:15 14:54:07.219 WARN  --- [restartedMain] com.rubypaper.LoggingRunner : WARN 로그 메세지 
+2020:03:15 14:54:07.219 ERROR --- [restartedMain] com.rubypaper.LoggingRunner : ERROR 로그 메세지 
+2020:03:15 14:54:12.198 WARN  --- [restartedMain] com.rubypaper.LoggingRunner : WARN 로그 메세지 
+2020:03:15 14:54:12.198 ERROR --- [restartedMain] com.rubypaper.LoggingRunner : ERROR 로그 메세지 
