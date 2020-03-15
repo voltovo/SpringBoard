@@ -6,9 +6,12 @@ import java.util.List;
 
 import com.rubypaper.BoardVO;
 
+import org.springframework.stereotype.Service;
+
 /**
  * BoardServiceImpl
  */
+@Service
 public class BoardServiceImpl implements BoardService {
 
     @Override
