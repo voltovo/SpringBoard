@@ -1,0 +1,11 @@
+2020-03-15 14:33:04.558  INFO 8512 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-03-15 14:33:04.560  INFO 8512 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-15 14:33:04.560  INFO 8512 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-03-15 14:33:04.588  INFO 8512 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-03-15 14:33:04.589  INFO 8512 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 391 ms
+2020-03-15 14:33:04.669  INFO 8512 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-03-15 14:33:04.732  INFO 8512 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-03-15 14:33:04.756  INFO 8512 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-03-15 14:33:04.758  WARN 8512 --- [restartedMain] com.rubypaper.LoggingRunner              : WARN 로그 메세지
+2020-03-15 14:33:04.758 ERROR 8512 --- [restartedMain] com.rubypaper.LoggingRunner              : ERROR 로그 메세지
+2020-03-15 14:33:04.759  INFO 8512 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
