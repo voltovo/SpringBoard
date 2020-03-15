@@ -1,10 +1,13 @@
 package com.rubypaper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import com.rubypaper.service.BoardService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,22 +15,24 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.web.servlet.MockMvc;
 
 /**
  * BoardControllerTest
  */
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+//비즈니스 컴포넌트 모킹
+@SpringBootTest(webEnvironment = WebEnvironment.MOCK)
 @AutoConfigureMockMvc
 public class BoardControllerTest {
 
-    /* @Autowired
-    private MockMvc mockMvc; */
+    @Autowired
+    private MockMvc mockMvc;
     //RANDOM_PORT를 사용하며느 더이상 서블릿 컨테이너를 모킹하지 않아서
     //MockMvc 객체를 목업 할 수 없으므로, TestRestTemplate 객체 주입
-    @Autowired
-    private TestRestTemplate restTemplate;
+    /* @Autowired
+    private TestRestTemplate restTemplate; */
 
     /* @Test
     public void testHello()throws Exception{
@@ -43,10 +48,23 @@ public class BoardControllerTest {
         assertEquals("Hello : 둘리", result);
     } */
 
-    @Test
+    /* @Test
     public void testGetBoard()throws Exception{
         BoardVO board = restTemplate.getForObject("/getBoard", BoardVO.class);
         assertEquals("테스터", board.getWriter());
+    } */
+
+    @MockBean
+    private BoardService boardService;
+
+    @Test
+    public void testHello() throws Exception{
+        when(boardService.hello("둘리")).thenReturn("Hello : 둘리");
+
+        mockMvc.perform(get("/hello").param("name", "둘리"))
+        .andExpect(status().isOk())
+        .andExpect(content().string("Hello : 둘리"))
+        .andDo(print());
     }
     
 }
