@@ -4,14 +4,12 @@ import java.util.List;
 
 import com.rubypaper.BoardVO;
 
-/**
- * BoardService
- */
 public interface BoardService {
 
-    String hello(String name);
+	    String hello(String name);
 
-    BoardVO getBoard();
+	    BoardVO getBoard();
 
-    List<BoardVO> getBoardList();
+	    List<BoardVO> getBoardList();
+	
 }
