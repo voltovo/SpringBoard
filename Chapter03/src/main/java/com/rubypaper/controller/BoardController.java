@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.List;
 
 import com.rubypaper.BoardVO;
+import com.rubypaper.service.BoardService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,19 +18,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BoardController {
 
-    public BoardController() {
-        System.out.println("==> BoardController 생성");
-    }
+    // public BoardController() {
+    //     System.out.println("==> BoardController 생성");
+    // }
+
+    @Autowired
+    private BoardService boardService;
 
     @GetMapping("/hello")
     public String hello(String name) {
-        return "Hello : " + name;
+        //서비스단 구성으로 변경
+        // return "Hello : " + name;
+        return boardService.hello(name);
     }
 
     // 객체
     @GetMapping("/getBoard")
     public BoardVO getBoard() {
-        // BoardVO 객체 생성
+        //서비스단 구성으로 변경
+        /* // BoardVO 객체 생성
         BoardVO board = new BoardVO();
 
         // 객체 정보 설정
@@ -40,13 +48,15 @@ public class BoardController {
         board.setCnt(0);
 
         // 객체 리턴
-        return board;
+        return board; */
+        return boardService.getBoard();
     }
 
     // 컬렉션
     @GetMapping("/getBoardList")
     public List<BoardVO> getBoardList() {
-        // 컬렉션으로 boradVo 객체 생성
+        //서비스단 구성으로 변경
+        /* // 컬렉션으로 boradVo 객체 생성
         List<BoardVO> boardList = new ArrayList<BoardVO>();
         // 반복문 사용해서 list에 객체 설정
         for (int i = 1; i <= 10; i++) {
@@ -64,7 +74,8 @@ public class BoardController {
             boardList.add(board);
         }
 
-        return boardList;
+        return boardList; */
+        return boardService.getBoardList();
     }
 
 }
