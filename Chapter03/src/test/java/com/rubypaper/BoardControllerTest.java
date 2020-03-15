@@ -18,7 +18,6 @@ import org.springframework.test.web.servlet.MockMvc;
 /**
  * BoardControllerTest
  */
-@RunWith(SrpingRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 public class BoardControllerTest {
