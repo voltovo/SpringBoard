@@ -24,4 +24,8 @@ JPA도 제공하는 인터페이스를 이용해서 DB를 연동하면, 실제�
 Hibernate , EclipseLink , DataNucleus 등이 있다.<br>
 스프링 부트에서는 기본적으로 **하이버네이트**를 JPA 구현체로 사용한다.
 
-
+#### 2.2 JPA 동작 원리
+JPA는 자바 애플리케이션과 JDBC 사이에 존재하면서 JDBC의 복잡한 절차를 대신 처리해준다. 따라서 개발자는 JDBC의 복잡한 API를 모르고도 데이터베이스를 사용할 수 있다.<br>
+![Alt Text](./img/jpaActionprinciple.jpg);<br>
+**중요한것은 JPA가 데이터베이스 연동에 사용되는 코드뿐만 아니라 SQL까지 제공한다**
+<br>그래서 JPA를 이용해 데이터베이스 연동을 처리하면 개발 및 유지보수의 편의성이 높아진다. <br> 
