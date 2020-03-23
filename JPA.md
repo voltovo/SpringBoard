@@ -29,3 +29,41 @@ JPA는 자바 애플리케이션과 JDBC 사이에 존재하면서 JDBC의 복�
 ![Alt Text](./img/jpaActionprinciple.jpg);<br>
 **중요한것은 JPA가 데이터베이스 연동에 사용되는 코드뿐만 아니라 SQL까지 제공한다**
 <br>그래서 JPA를 이용해 데이터베이스 연동을 처리하면 개발 및 유지보수의 편의성이 높아진다. <br> 
+
+#### 2.3 엔티티 클래스 작성 및 테이블 매핑
+JPA는 테이블이 없으면 자바 클래스를 기준으로 매핑할 테이블을 자동으로 생성한다.<br>
+* 엔티티 : 테이블과 매핑되는 자바클래스 / JPA 퍼스펙티브가 제공하는 엔티티 생성 기능을 사용하면, 엔티티를 생성함과 동시에 영속석 설정 파일(persistence.xml)에 자동으로 엔티티를 등록해준다.
+
+* 엔티티에 설정되는 어노테이션<br>
+
+|어노테이션|의미|
+|:--|:--|
+|@Entity|@Entity가 설정된 클래스를 엔티티라 하며, 기본적으로 클래스 이름과 동일한 테이블과 매핑된다.|
+|@Table|엔티티 이름과 매핑될 테이블 이름이 다른 경우, name 속성을 사용하여 매핑한다. 엔티티 이름과 테이블 이름이 동일하면 생략 가능|
+|@Id|테이블의 기본 키를 매핑한다. 예제에서는 seq 변수가 테이블의 SEQ 칼럼과 매핑되도록 설정했다.<Br>엔티티의 필수 어노테이션으로서 @Id가 없는 엔티티는 사용하지 못한다.|
+|@GeneratedValue|@Id가 선언된 필드에 기본 키 값을 자동으로 할당한다. 다양한 옵션이 있지만 @GeneratedValue만 사용하면 설정된 데이터베이스에 따라서 JPA가 자동으로 결정해준다|
+
+#### 2.4 JPA 메인 설정 파일 작성
+**META-INF 폴더에 persistence.xml 은 JPA의 메인 환경설정 파일이다.**<br>
+JPA는 무조건 persistence.xml 파일을 로딩하여, 이 파일의 설정대로 동작한다.<br>
+연동할 DB의 정보는 영속성 유닛(Persistence Unit)로 설정한다.
+* hibernate.dialect : JPA 구현체가 사용할 Dialect 클래스를 지정할 때 사용. H2Dialect 클래스면 H2용 Sql 생성 / OracleDialect로 변경하면 Oracle용 Sql 생성
+
+## 3. JPA 설정
+대부분의 프레임워크가 설정을 할 때 xml로 관리한다. JPA도 persistence.xml파일로 관리한다.
+
+#### 3.1 영속성 유닛 설정
+* < persistence> : persistence.xml 파일의 루트
+* < persistence-unit> : 영속성 유닛에 해당하는 엘리먼트 / 연동하려는 DB가 여러개면 < persistence-unit>을 여러개 설정할 수 있다. 여러개 등록시 식별하기 위해서 유일한 이름을 name속성으로 지정 한다.
+* persistence Unit 설정<br>
+<pre>
+ < persistence-unit name="Chapter04">
+</pre>
+* Java 소스<br>
+<pre>
+    //EntityManager 생성
+    EntityManagerFactory emf = 
+        Persistence.createEntityManagerFactory("Chapter04");
+    EntityManager em = emf.createEntityManager();
+</pre>
+
