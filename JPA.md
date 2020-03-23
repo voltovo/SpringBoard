@@ -66,4 +66,21 @@ JPA는 무조건 persistence.xml 파일을 로딩하여, 이 파일의 설정대
         Persistence.createEntityManagerFactory("Chapter04");
     EntityManager em = emf.createEntityManager();
 </pre>
+설정 후 진행 순서 <br>
+* 클래스 목록이 등록된다.<br>
+* DB 연결 데이터소스 설정 추가<br>
+* Dialect 클래스 설정<br>
+JPA의 가장 큰 장점 중 하나는 데이터베이스 연동에 필요한 SQL 구문을 자동을 생성한다는 것<br>
+하지만 SQL을 잘 작성했다고 해도, 데이터베이스마다 키 생성 방식, 함수 등이 다르기 때문에 데이터베이스가 달라지면 모든 부분을 찾아서 수정해야한다. 이런 점을 해결해 주는것이 H2Dialect 클래스 등록이다.
+* JPA구현체 설정<br>
+JPA는 다양한 ORM 프레임워크를 동일한 방법으로 사용하기 위한 인터페이스에 불과하다. 따라서 실질적으로 기능을 제공할 JPA구현체에 대한 설정이 필요.<br>
+
+|속성|의미|
+|:--|:--|
+|hibernate.show_sql|하이버네이트가 생성한 SQL을 콘솔에 출력|
+|hibernate.format_sql|하이버네이트가 생성한 SQL을 출력할 때, 보기 좋은 포맷으로 출력|
+|hibernate.use_sql_comments|SQL에 포함된 주석(Comment)도 같이 출력|
+|hibernate.id.new_generator_mappings|키 생성 전략을 사용|
+|hibernate.hbm2ddl.auto|테이블 생성(create)이나 변경(alter),삭제(drop) 같은 DDL구문을 자동으로 실행할지 지정한다.|
+
 
