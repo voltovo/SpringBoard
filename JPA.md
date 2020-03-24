@@ -83,4 +83,7 @@ JPA는 다양한 ORM 프레임워크를 동일한 방법으로 사용하기 위�
 |hibernate.id.new_generator_mappings|키 생성 전략을 사용|
 |hibernate.hbm2ddl.auto|테이블 생성(create)이나 변경(alter),삭제(drop) 같은 DDL구문을 자동으로 실행할지 지정한다.|
 
+hibernate.id.new_generator_mappings : 테이블에 Primary Key값을 자동으로 증가시키려면 속성을 true로 설정하면 된다.<br>
+hibernate.hbm2ddl.auto : 엔티티를 기준으로 테이블을 새롭게 생성할지, 또는 기존의 테이블을 재사용할지 등의 여부를 결정할 수 있다.<br>
+
 
