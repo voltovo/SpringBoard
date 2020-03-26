@@ -150,4 +150,41 @@ TemporalType.TIMESTAMP : 날짜와 시간 모두 출력<br>
 장점 : 별도의 테이블이 필요 없으며, 등록 작업의 처리 속도가 빠르다.<br>
 단점 : 오라클,H2 같은 시퀀스를 지원하는 DB 에서만 사용 가능하다<br>
 
+## 4. JPA API 이해
+#### 4.1 EntityManagerFactory와 EntityManager
+* EntityManager : JPA를 이용하는 애플리케이션의 시작은 EntityManager의 생성이다.JPA를 이용해서 CRUD기능을 처리할라면 필요하다. EntityManagerFactory로 부터 얻을 수 있다.<br>
+![Alt Text](./img/EntityManager.jpg);<br>
 
+1. Persistence 클래스를 이용하여 영속성 유닛(persistence-unit)정보가 저장된 JPA메인 환결설정 파일(persistence.xml)을 로딩한다.
+2. 영속성 유닛(persistence-unit) 설정 정보를 바탕으로 EntityManagerFactory 객체를 생성한다.
+3. EntityManagerFactory로부터 EntityManager를 얻어서 데이터베이스 연동을 처리한다.<br>
+* 그림은 실제 JPA가 자동으로 META-INF 폴더에 있는 persistence.xml 파일을 로딩하는 과정으로 이해하면 된다.
+* EntityManager 가 제공하는 CURD 기능의 메소드<br>
+
+|메소드|기능설명|
+|:---|:---|
+|persist(Object entity)|엔티티를 영속화한다.(INSERT)|
+|merge(Object entity)|준영속 상태의 엔티티를 영속화한다.(UPDATE)|
+|remove(Object entity)|영속 상태의 엔티티를 제거한다.(DELETE)|
+|find(Class< T> entityClass, Object primaryKey)|하나의 엔티티를 검색한다.(SELECT ONE)|
+|createQuery(String jpql, Class< T> resultClass)|JPQL에 해당하는 엔티티 목록을 검색한다.(SELECT LIST)|
+
+#### 4.2 영속성 컨텍스트 이해하기
+Persistence Context : 논리적인 개념으로, EntityManager를 생성할 때 자동으로 만들어진다. 엔티티 객체들을 관리하는 일종의 컨테이너이다.<br>
+그림과 같이 비영속(New),영속(Managed),준영속(Detached),삭제(Removed)상태로 존재<br>
+![Alt Text](./img/EntityStatus.jpg);<br>
+
+|상태|의미|
+|:--|:--|
+|비영속|엔티티가 영속성 컨텍스트와 전혀 무관한 상태|
+|영속|엔티티가 영속성 컨텍스트에 저장된 상태|
+|준영속|엔티티가 한번 영속성 컨텍스트에 저장되었다가 분리된 상태|
+|삭제|엔티티가 영속성 컨텍스트에서 삭제된 상태|
+
+1. 비영속 상태(NEW)<br>
+비영속 상태는 엔티티 객체를 생성만 했을 뿐 아직 엔티티를 영속성 컨텍스트에 저장하지 않은 상태.<br>
+
+2. 영속 상태(MANAGED)<br>
+EntityManager를 통해 엔티티가 영속성 컨텍스트에 저장된 상태를 의미. 영속 상태로 만들기 위해서는 EntityManager의 persist()메소드 사용.<br>
+EntityManager의 find() 메소드를 통해서도 엔티티를 영속 상태로 가능<br>
+find() 메소드를 호출했을 때, 조회하고자 하는 엔티티가 영속성 컨텍스트에 있으면 해당 엔티티가 반환, 만약 없으면 DB에서 데이터를 조회하여 새로운 엔티티 객체를 생성하여 영속성 컨텍스트에 저장
