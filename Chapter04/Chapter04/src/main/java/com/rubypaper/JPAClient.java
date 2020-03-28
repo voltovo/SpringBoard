@@ -22,15 +22,17 @@ public class JPAClient {
 			//Transaction 시작
 			tx.begin();
 			
-			Board board = new Board();
-			board.setTitle("JPA 제목");
-			board.setWriter("관리자");
-			board.setContent("JPA 글 등록 잘 되네요.");
-			board.setCreateDate(new Date());
-			board.setCnt(0L);
+			//수정할 게시글 조회
+			Board board = em.find(Board.class, 1L);
+			board.setTitle("검색한 게시슬의 제목 수정");
 			
-			//글 등록
-			em.persist(board);
+			/*
+			 * Board board = new Board(); board.setTitle("JPA 제목"); board.setWriter("관리자");
+			 * board.setContent("JPA 글 등록 잘 되네요."); board.setCreateDate(new Date());
+			 * board.setCnt(0L);
+			 * 
+			 * //글 등록 em.persist(board);
+			 */
 			
 			//Transaction commit
 			tx.commit();

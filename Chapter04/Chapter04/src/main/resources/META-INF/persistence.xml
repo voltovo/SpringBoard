@@ -21,7 +21,7 @@
 			<property name="hibernate.id.new_generator_mappings" value="true"/>
 			<!-- 데이터 누적하기 위해서 추가 -->
 			<!-- <property name="hibernate.hbm2ddl.auto" value="create"/> -->
-			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
 		</properties>
 	</persistence-unit>
 </persistence>
