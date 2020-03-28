@@ -51,7 +51,7 @@ public class JPAClient {
 			tx.commit();
 			
 			//글 목록 조회
-			String jpql = "select * from Board order by seq desc";
+			String jpql = "select b from Board b order by b.seq desc";
 			List<Board> boardList = em.createQuery(jpql, Board.class).getResultList();
 			for(Board brd : boardList) {
 				System.out.println("---->" + brd.toString());
