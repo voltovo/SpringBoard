@@ -258,3 +258,20 @@ JPQL로 검색 기능을 수행하면 쿼리를 실행하기 전에 SQL 저장�
 #### 5.1 스프링 데이터 JPA 퀵스타트
 * JPA starter : 스프링 부트에서 JPA 연동에 필요한 라이브러리들과 복잡한 XML 설정을 자동으로 처리하기 위해 사용
 
+#### 5.2 Repository 인터페이스
+Repository : 기존의 DAO(Data Access Object)와 동일한 개념으로 비즈니스 클래스에서는 이 Repository를 이용해서 실질적인 데이터베이스 연동을 처리한다.<br>
+* Repository 인터페이스 상속 구조
+
+![Alt Text](./img/JpaRepository.jpg)<br>
+
+Repository : 기능이 거의 없는 없다 <br>
+CrudRepository : 주로 사용하고, CRUD 기능을 제공
+PagingAndSortingRepository : 검색 기능이 필요하고, 검색 결과 화면에 대해 페이징 처리 필요 할 때 사용.<br>
+JpaRepository : 스프링데이터 JPA에서 추가한 기능을 사용하고 싶을 때 사용<br>
+위의 Repository 인터페이스들의 공통점 : 두 개의 제네릭 타입을 지정
+<pre>
+CrudRepository< T,ID>
+T : 엔티티의 클래스 타입
+ID : 식별자 타입(@Id로 매핑한 식별자 변수의 타입)
+</pre>
+
