@@ -275,3 +275,19 @@ T : 엔티티의 클래스 타입
 ID : 식별자 타입(@Id로 매핑한 식별자 변수의 타입)
 </pre>
 
+* CrudRepository 를 상속하는 방법
+<pre>
+package com.rubypaper.persistence;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.rubypaper.domain.Board;
+
+public interface BoardRepository extends CrudRepository<Board, Long> {
+
+}
+</pre>
+* 일반적인 스프링 프로젝트와 다른점 : <br>
+일반적으로 인터페이스는 객체로 생성할 수 없고 다른 클래스들의 부모로만 사용된다. 하지만 스프링 데이터 JPA 를 사용하면 별도의 구현 클래스를 만들지 않고 인터페이스만 정의해도 기능 구현 가능. **스프링부트가 내부적으로 인터페이스에 대한 구현 객체를 자동으로 생성**
+한다는 것을 의미한다.<br>
+또한 JPA를 이용해서 데이터베이스를 연동하기 위해 EntityManagerFactory, EntityManager, EntityTransaction 같은 객체도 내부적으로 처리 되기 때문에 필요 없다.<br>
