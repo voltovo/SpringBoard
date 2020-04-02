@@ -33,13 +33,18 @@ public class BoardRepositoryTest {
 	 * boardRepo.findById(1L).get(); System.out.println(board.toString()); }
 	 */
 	
+	/* 수정 테스트
+	 * @Test public void testUpdateBoard() {
+	 * System.out.println("=== 1번 게시글 조회 ==="); Board board =
+	 * boardRepo.findById(1L).get();
+	 * 
+	 * System.out.println("=== 1번 게시글 제목 수정 ===="); board.setTitle("제목을 수정했다.");
+	 * boardRepo.save(board); }
+	 */
+	
+	//삭제 테스트
 	@Test
-	public void testUpdateBoard() {
-		System.out.println("=== 1번 게시글 조회 ===");
-		Board board = boardRepo.findById(1L).get();
-		
-		System.out.println("=== 1번 게시글 제목 수정 ====");
-		board.setTitle("제목을 수정했다.");
-		boardRepo.save(board);
+	public void testDeleteBoard() {
+		boardRepo.deleteById(1L);
 	}
 }
