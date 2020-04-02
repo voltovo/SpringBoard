@@ -1,5 +1,7 @@
 package com.rubypaper;
 
+import java.util.Date;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,7 @@ public class BoardRepositoryTest {
 		board.setContent("잘 등록되나요?");
 		board.setCreateDate(new Date());
 		board.setCnt(0L);
+		
 		
 		boardRepo.save(board);
 	}
