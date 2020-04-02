@@ -11,6 +11,9 @@ public interface BoardRepository extends CrudRepository<Board, Long> {
 	List<Board> findByTitle(String searchKeyword);
 	//like 쿼리 메소드
 	List<Board> findByContentContaining(String searchkeyword);
-	//여러 조건 사용
+	//여러 조건 메소드
 	List<Board> findByTitleContainingOrContentContaining(String title, String content);
+	//데이터 정렬 메소드
+	List<Board> findByTitleContainingOrderBySeqDesc(String searchkeyword);
+	
 }
