@@ -38,12 +38,20 @@ public class QueryMethodTest {
 	 * System.out.println("---> " + board.toString()); } }
 	 */
 	
+	/*
+	 * @Test public void testByContentContaining() { //like 쿼리 메소드 List<Board>
+	 * boardList = boardRepo.findByContentContaining("17");
+	 * 
+	 * System.out.println("검색 결과"); for(Board board : boardList) {
+	 * System.out.println("---> " + board.toString()); } }
+	 */
+	
+	
 	@Test
-	public void testByContentContaining() {
-		//like 쿼리 메소드
-		List<Board> boardList = boardRepo.findByContentContaining("17");
+	public void testFindByTitleContainingOrContentContaining() {
+		List<Board> boardList = boardRepo.findByTitleContainingOrContentContaining("17", "17");
 		
-		System.out.println("검색 결과");
+		System.out.println("검색 결과 ====");
 		for(Board board : boardList) {
 			System.out.println("---> " + board.toString());
 		}
