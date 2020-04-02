@@ -307,3 +307,13 @@ public interface BoardRepository extends CrudRepository<Board, Long> {
 |< S extends T>Iterable< S>save(Iterable< S>)|여러 엔티티들을 한 번에 등록, 수정|
 |< S extends T>S save< S entity>|하나의 엔티티를 등록,수정|
 
+#### 5.3 쿼리 메소드 사용하기
+일반적으로 JPA를 이용해서 목록 기능을 구현할 때는 JPQL을 이용한다.<br>
+JPQL은 검색 대상이 테이블이 아닌 엔티티라는 것만 제외하고는 기본 구조와 문법이 기존의 SQL과 유사하다. 하지만 엔티티를 대상으로 검색을 처리해야 하기 때문에 다소 복잡할 수 있다.
+이런 복잡한 JPQL을 메소드로 대신 처리 할 수 있는것이 쿼리 메소드 이다.<br>
+쿼리 메소드 : 메소드의 이름으로 필요한 쿼리를 만들어 주는 기능.<br>
+* 쿼리 메소드 사용 TIP
+1. 작성 때 엔티티 이름 생략 가능<br>
+엔티티 이름을 생략하면 현재 사용하는 Repository 인터페이스에 선언된 타입 정보를 기준으로 자동 엔티티 이름이 적용.
+2. 쿼리 메소드 리턴 타입<br>
+Page< T>, Slice< T>, List< T> 중에 가장 많이 사용하는 것은 Page< T>, List< T>이다.<br>List< T> = 단순한 목록 검색 / Page< T> = 페이징 처리<br>
