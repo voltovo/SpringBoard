@@ -317,3 +317,17 @@ JPQL은 검색 대상이 테이블이 아닌 엔티티라는 것만 제외하고
 엔티티 이름을 생략하면 현재 사용하는 Repository 인터페이스에 선언된 타입 정보를 기준으로 자동 엔티티 이름이 적용.
 2. 쿼리 메소드 리턴 타입<br>
 Page< T>, Slice< T>, List< T> 중에 가장 많이 사용하는 것은 Page< T>, List< T>이다.<br>List< T> = 단순한 목록 검색 / Page< T> = 페이징 처리<br>
+3. 쿼리 메소드 유형<br>
+
+|키워드|예시|생성되는 SQL|
+|:--|:---|:---|
+|And|findByLastnameAndFirstname|where x.lastname = ? 1 and x.firstname = ? 2|
+|Or|findByLsatnameOrFirstname|where x.lastname = ? 1 or x.firstname = ? 2|
+|Between|findByStartDateBetween|where x.startDate between ? 1 and ? 2|
+|IsNull|findByAgeIsNull|where x.age is null|
+|IsNotNull, NotNull|findByAge(Is)NotNull|where x.age is not null|
+|Like|findByFirstnameLike|where x.firstname like ? 1|
+|Containing|findByFirstnameContaining|where x.firstname like '%'||?1||'%'|
+|OrderBy|findByAgeOrderByLastnameDesc|where x.age = ? 1 order by x.lastname desc|
+|Not|findByLastnameNot|where x.lastname <> ? 1|
+|In|findByAgeIn(Collection< Age> ages)|where x.age in ? 1|
