@@ -291,3 +291,19 @@ public interface BoardRepository extends CrudRepository<Board, Long> {
 일반적으로 인터페이스는 객체로 생성할 수 없고 다른 클래스들의 부모로만 사용된다. 하지만 스프링 데이터 JPA 를 사용하면 별도의 구현 클래스를 만들지 않고 인터페이스만 정의해도 기능 구현 가능. **스프링부트가 내부적으로 인터페이스에 대한 구현 객체를 자동으로 생성**
 한다는 것을 의미한다.<br>
 또한 JPA를 이용해서 데이터베이스를 연동하기 위해 EntityManagerFactory, EntityManager, EntityTransaction 같은 객체도 내부적으로 처리 되기 때문에 필요 없다.<br>
+
+* CrudRepository 인터페이스 메소드 기능(spring boot 2.xx version)<br>
+
+|메소드|기능|
+|:--|:--|
+|long count()|모든 엔티티의 개수 리턴|
+|void delete(ID)|식별 키를 통한 삭제|
+|void delete(Iterable<? Extends T>)|주어진 모든 엔티티 삭제|
+|void deleteAll()|모든 엔티티 삭제|
+|boolean exists(ID)|식별 키를 가진 엔티티가 존재 하는지 확인|
+|Iterable< T>findAll()|모든 엔티티 목록 리턴|
+|Iterable< T>findAll(Iterable< ID>)|해당 식별 키를 가진 엔티티 목록 리턴|
+|T findOne< ID>|해당 식별 키에 해당하는 단일 엔티티 리턴|
+|< S extends T>Iterable< S>save(Iterable< S>)|여러 엔티티들을 한 번에 등록, 수정|
+|< S extends T>S save< S entity>|하나의 엔티티를 등록,수정|
+
