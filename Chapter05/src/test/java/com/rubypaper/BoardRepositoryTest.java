@@ -18,7 +18,7 @@ public class BoardRepositoryTest {
 	@Autowired
 	private BoardRepository boardRepo;
 	
-	/*
+	/* 등록 테스트
 	 * @Test public void testInsertBoard() { Board board = new Board();
 	 * board.setTitle("첫 번째 게시글"); board.setWriter("테스터");
 	 * board.setContent("잘 등록되나요?"); board.setCreateDate(new Date());
@@ -28,9 +28,18 @@ public class BoardRepositoryTest {
 	 * boardRepo.save(board); }
 	 */
 	
+	/* 상세조회 테스트
+	 * @Test public void testGetBoard() { Board board =
+	 * boardRepo.findById(1L).get(); System.out.println(board.toString()); }
+	 */
+	
 	@Test
-	public void testGetBoard() {
+	public void testUpdateBoard() {
+		System.out.println("=== 1번 게시글 조회 ===");
 		Board board = boardRepo.findById(1L).get();
-		System.out.println(board.toString());
+		
+		System.out.println("=== 1번 게시글 제목 수정 ====");
+		board.setTitle("제목을 수정했다.");
+		boardRepo.save(board);
 	}
 }
