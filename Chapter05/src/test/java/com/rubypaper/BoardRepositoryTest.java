@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.rubypaper.domain.Board;
@@ -52,10 +53,22 @@ public class BoardRepositoryTest {
 	 * @Test public void testDeleteBoard() { boardRepo.deleteById(1L); }
 	 */
 	
-	//페이징 테스트
+	/*
+	 * //페이징 테스트
+	 * 
+	 * @Test public void testFindByTitleContaining() { Pageable paging =
+	 * PageRequest.of(0, 5);
+	 * 
+	 * List<Board> boardList = boardRepo.findByTitleContaining("제목", paging);
+	 * 
+	 * System.out.println("검색 결과"); for(Board board : boardList) {
+	 * System.out.println("---> " + board.toString()); } }
+	 */
+	
+	//정렬 테스트
 	@Test
 	public void testFindByTitleContaining() {
-		Pageable paging = PageRequest.of(0, 5);
+		Pageable paging = PageRequest.of(0, 5, Sort.Direction.DESC, "seq");
 		
 		List<Board> boardList = boardRepo.findByTitleContaining("제목", paging);
 		
