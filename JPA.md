@@ -331,3 +331,24 @@ Page< T>, Slice< T>, List< T> 중에 가장 많이 사용하는 것은 Page< T>,
 |OrderBy|findByAgeOrderByLastnameDesc|where x.age = ? 1 order by x.lastname desc|
 |Not|findByLastnameNot|where x.lastname <> ? 1|
 |In|findByAgeIn(Collection< Age> ages)|where x.age in ? 1|
+
+4. Page< T> 타입<br>
+검색 결과를 List< T> 타입으로 받아도 되지만, 스프링 MVC에서 검색을 이용할 경우 Page< T>를 사용하는 것이 좋다. 다양한 정보들을 추가로 제공하기 때문이다.<br>
+
+|메소드|설명|
+|:---|:---|
+|int getNumber()|현재 페이지 정보|
+|int getSize()|한 페이지의 크기|
+|int getTotalPages()|전체 페이지의 수|
+|int getNumberOfElements()|결과 데이터 수|
+|boolean hasPreviousPage()|이전 페이지의 존재 여부|
+|boolean hasNextPage()|다음 페이지의 존재 여부|
+|boolean isLastPage()|마지막 페이지의 존재 여부|
+|Pageable nextPageable()|다음 페이지 객체|
+|Pageable previeousPageable()|이전 페이지 객체|
+|List< T> getContent()|조회된 데이터 목록|
+|boolean hasContent()|결과 존재 여부|
+|Sort getSort()|검색 시 사용된 Sort 정보|
+
+#### 5.4 @Query 어노테이션
+@Query : 복작한 쿼리를 사용하거나 join을 하기 위해서 JPQL을 가능하게 하는 어노테이션<br>
