@@ -27,7 +27,7 @@ public interface BoardRepository extends CrudRepository<Board, Long> {
 	Page<Board> findByTitleContaining(String searchkeyword, Pageable paging);
 	
 	//위치기반 파라미터 사용하기
-	@Query("SELECT b FROM Board b WHERE b.TITLE like %?1% ORDER BY b.seq DESC")
+	@Query("SELECT b FROM Board b WHERE b.title like %?1% ORDER BY b.seq DESC")
 	List<Board> queryAnnotationTest1(String searchkeyword);
 	
 }
