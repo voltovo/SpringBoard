@@ -25,9 +25,17 @@ public class QueryAnnotationTest {
 	 * System.out.println("---> " + board.toString()); } }
 	 */
 	
+//	  @Test public void testQueryAnnotationTest3() { List<Object[]> boardList =
+//	  boardRepo.queryAnnotationTest3("테스트 제목10");
+//	  
+//	  System.out.println("검색 결과 ==="); for(Object[] row : boardList) {
+//	  System.out.println("---> " + Arrays.toString(row)); } }
+	 
+	
+	//네이티브 쿼리 사용
 	@Test
-	public void testQueryAnnotationTest3() {
-		List<Object[]> boardList = boardRepo.queryAnnotationTest3("테스트 제목 10");
+	public void testQueryAnnotationTest4() {
+		List<Object[]> boardList = boardRepo.queryAnnotationTest4("테스트 제목10");
 		
 		System.out.println("검색 결과 ===");
 		for(Object[] row : boardList) {
