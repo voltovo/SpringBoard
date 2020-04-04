@@ -360,3 +360,15 @@ Page< T>, Slice< T>, List< T> 중에 가장 많이 사용하는 것은 Page< T>,
 * QueryDSL<br>마이바티스처럼 동적으로 쿼리를 처리 할 수 있게 해준다.<br>
 오픈소스 프로젝트로 쿼리를 문자열이 아닌 자바 코드로 작성할 수 있도록 지원하는 일종의 JPQL 빌더이다.
 
+
+* 사용가능한 메소드
+
+|메소드|설명|
+|:--|:---|
+|long count(Predicate p)|검색된 데이터의 전체 개수|
+|boolean exists(Predicate p)|검색된 데이터의 존재 여부|
+|Iterable< T> findAll(Predicate p)|조건에 맞는 모든 데이터 목록|
+|Page< T> findAll(Predicate p)|조건에 맞는 데이터 목록|
+|Iterable< t>findAll(Predicate p, Sort s)|조건에 맞는 모든 데이터 목록 정렬|
+|T findOne(Predicate p)|조건에 맞는 하나의 데이터|
+
