@@ -6,6 +6,8 @@ Spring boot로 게시판 만들기
 
 [JPA 란?](JPA.md)<br>
 
+[매핑이란?](mapping.md)<br>
+
 [게시판 작성하면서 알게된 것들](Record.md)<br>
 
 
