@@ -43,4 +43,6 @@ public interface BoardRepository extends CrudRepository<Board, Long> {
 	@Query(value = "select seq, title, writer, create_date from board where title like '%'||?1||'%' order by seq desc", nativeQuery = true)
 	List<Object[]> queryAnnotationTest4(String searchkeyword);
 	
+	//
+	
 }
