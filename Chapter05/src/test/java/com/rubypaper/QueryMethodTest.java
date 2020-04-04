@@ -25,7 +25,7 @@ public class QueryMethodTest {
 //	  @Before 
 //	  public void dataPrepare() { for (int i = 1; i <= 200; i++) { 
 //		  Board board = new Board(); 
-//		  board.setTitle("테스트 제목" + i);
+//		  board.setTitle("테스트 제목 " + i);
 //		  board.setWriter("테스터");
 //		  board.setContent("테스트 내용 " + i);
 //		  board.setCreateDate(new Date());
@@ -35,7 +35,7 @@ public class QueryMethodTest {
 //	  boardRepo.save(board); } }
 //	  
 //	  //검색 쿼리 메소드 TEST
-//	  
+//	   
 //	  @Test public void testFindByTitle() { //테스트 제목 10인 게시글 검색 
 //	  List<Board> boardList = boardRepo.findByTitle("테스트 제목 10");
 //	  
