@@ -30,7 +30,7 @@ public class Board {
 	//Member 객체와 연관 매핑 처리
 	//N:1(다대일) 관계 설정
 	@ManyToOne
-	//외래키 매핑
-	@JoinColumn(name = "MEMBER_ID")
+	//외래키 매핑 , 내부조인 추가 (nullable)
+	@JoinColumn(name = "MEMBER_ID", nullable = false)
 	private Member member;
 }
