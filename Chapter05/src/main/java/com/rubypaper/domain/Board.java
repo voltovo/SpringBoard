@@ -34,4 +34,9 @@ public class Board {
 	//외래키 매핑 , 내부조인 추가 (nullable)
 	@JoinColumn(name = "MEMBER_ID", nullable = false)
 	private Member member;
+	
+	public void setMember(Member member) {
+		this.member = member;
+		member.getBoardList().add(this);
+	}
 }

@@ -1,6 +1,7 @@
 package com.rubypaper;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -67,15 +68,30 @@ public class RelationMappingTest {
 //		}
 //	}
 	
+	//게시긁 검색
+//	@Test
+//	public void testManyToOneSelect() {
+//		
+//		Board board = boardRepo.findById(5L).get();
+//		
+//		System.out.println("[ " + board.getSeq() + "번 게시글 정보 ]");
+//		System.out.println("제목 : " + board.getTitle());
+//		System.out.println("내용 : " + board.getContent());
+//		System.out.println("작성자 : " + board.getMember().getName());
+//		System.out.println("작성자 권한 : " + board.getMember().getRole());
+//	}
+	
 	@Test
-	public void testManyToOneSelect() {
+	public void testTwoWayMapping() {
+		Member member = memberRepo.findById("member1").get();
 		
-		Board board = boardRepo.findById(5L).get();
+		System.out.println("=================================");
+		System.out.println(member.getName() + "가 저장한 게시글 목록");
+		System.out.println("=================================");
 		
-		System.out.println("[ " + board.getSeq() + "번 게시글 정보 ]");
-		System.out.println("제목 : " + board.getTitle());
-		System.out.println("내용 : " + board.getContent());
-		System.out.println("작성자 : " + board.getMember().getName());
-		System.out.println("작성자 권한 : " + board.getMember().getRole());
+		List<Board> list = member.getBoardList();
+		for(Board board : list) {
+			System.out.println(board.toString());
+		}
 	}
 }
