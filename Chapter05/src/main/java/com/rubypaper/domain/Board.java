@@ -16,7 +16,8 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+//상호 호출로 인한 오류 때문에 재설정
+@ToString(exclude = "member")
 @Entity
 public class Board {
 	@Id @GeneratedValue
