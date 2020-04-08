@@ -55,4 +55,10 @@ public class BoardController {
 	public String insertBoardView() {
 		return "insertBoard";
 	}
+	
+	@GetMapping("/getBoard")
+	public String getBoard(Board board, Model model) {
+		model.addAttribute("board", boardService.getBoard(board));
+		return "getBoard";
+	}
 }
