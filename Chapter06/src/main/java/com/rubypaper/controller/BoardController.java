@@ -1,7 +1,5 @@
 package com.rubypaper.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,5 +70,10 @@ public class BoardController {
 	public String deleteBoard(Board board) {
 		boardService.deleteBoard(board);
 		return "forward:getBoardList";
+	}
+	
+	@GetMapping("/hello")
+	public void hello(Model model) {
+		model.addAttribute("greeting", "Hello 타임리프.^^");
 	}
 }
