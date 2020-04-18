@@ -6,24 +6,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.rubypaper.domain.Board;
+import com.rubypaper.domain.Member;
 import com.rubypaper.service.BoardService;
 
+@SessionAttributes("member")
 @Controller
 public class BoardController {
-	
+
 	@Autowired
 	private BoardService boardService;
-	
+
+	@ModelAttribute("member")
+	public Member setMember() {
+		return new Member();
+	}
+
 	@RequestMapping("/getBoardList")
-	public String getBoardList(Model model, Board board) {
-		
+	public String getBoardList(@ModelAttribute("member") Member member, Model model, Board board) {
+
+		// 로그인 하지 않았으면 로그인 페이지로
+		if (member.getId() == null) {
+			return "redirect:login";
+		}
+
 		List<Board> boardList = boardService.getBoaList(board);
-		
-		//데이터 추가 후 주석 처리
+
+		// 데이터 추가 후 주석 처리
 //		List<Board> boardList = new ArrayList<Board>();
 //		for(int i = 1; i <= 10; i++) {
 //			Board board = new Board();
@@ -38,42 +52,72 @@ public class BoardController {
 //			boardList.add(board);
 //			
 //		}
-		
+
 		model.addAttribute("boardList", boardList);
 		return "getBoardList";
 	}
-	
+
 	@PostMapping("/insertBoard")
-	public String insertBoard(Board board) {
+	public String insertBoard(@ModelAttribute("member") Member member, Board board) {
+
+		// 로그인 하지 않았으면 로그인 페이지로
+		if (member.getId() == null) {
+			return "redirect:login";
+		}
+
 		boardService.insertBoard(board);
 		return "redirect:getBoardList";
 	}
-	
+
 	@GetMapping("/insertBoard")
-	public String insertBoardView() {
+	public String insertBoardView(@ModelAttribute("member") Member member) {
+
+		// 로그인 하지 않았으면 로그인 페이지로
+		if (member.getId() == null) {
+			return "redirect:login";
+		}
+
 		return "insertBoard";
 	}
-	
+
 	@GetMapping("/getBoard")
-	public String getBoard(Board board, Model model) {
+	public String getBoard(@ModelAttribute("member") Member member, Board board, Model model) {
+
+		// 로그인 하지 않았으면 로그인 페이지로
+		if (member.getId() == null) {
+			return "redirect:login";
+		}
+
 		model.addAttribute("board", boardService.getBoard(board));
 		return "getBoard";
 	}
-	
+
 	@PostMapping("/updateBoard")
-	public String updateBoard(Board board) {
+	public String updateBoard(@ModelAttribute("member") Member member, Board board) {
+
+		// 로그인 하지 않았으면 로그인 페이지로
+		if (member.getId() == null) {
+			return "redirect:login";
+		}
+
 		boardService.updateBoard(board);
 		return "forward:getBoardList";
 	}
-	
+
 	@GetMapping("/deleteBoard")
-	public String deleteBoard(Board board) {
+	public String deleteBoard(@ModelAttribute("member") Member member, Board board) {
+
+		// 로그인 하지 않았으면 로그인 페이지로
+		if (member.getId() == null) {
+			return "redirect:login";
+		}
+
 		boardService.deleteBoard(board);
 		return "forward:getBoardList";
 	}
-	
-	@GetMapping("/hello")
-	public void hello(Model model) {
-		model.addAttribute("greeting", "Hello 타임리프.^^");
-	}
+
+	/*
+	 * @GetMapping("/hello") public void hello(Model model) {
+	 * model.addAttribute("greeting", "Hello 타임리프.^^"); }
+	 */
 }
