@@ -9,7 +9,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(HttpSecurity security) throws Exception {
-
+		security.authorizeRequests().antMatchers("/").permitAll();
+		security.authorizeRequests().antMatchers("/member/**").authenticated();
+		security.authorizeRequests().antMatchers("/manager/**").hasRole("MANAGER");
+		security.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
+		
+		security.csrf().disable();
 	}
 	
 	
