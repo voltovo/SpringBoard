@@ -14,7 +14,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		security.authorizeRequests().antMatchers("/manager/**").hasRole("MANAGER");
 		security.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
 		
+		//csrf : 크로스 사이트 위조 요청에 대한 설정
+		//RESTFull을 사용하기 위해서는 csrf 기능을 비활성화
 		security.csrf().disable();
+		//로그인 안했으면 로그인 페이지 보여주기
+		security.formLogin();
 	}
 	
 	
