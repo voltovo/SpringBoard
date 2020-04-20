@@ -18,7 +18,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		//RESTFull을 사용하기 위해서는 csrf 기능을 비활성화
 		security.csrf().disable();
 		//로그인 안했으면 로그인 페이지 보여주기
-		security.formLogin();
+//		security.formLogin();
+		//사용자 지정 로그인 페이지 
+		security.formLogin().loginPage("/loging").defaultSuccessUrl("/loginSuccess", true);
 	}
 	
 	
