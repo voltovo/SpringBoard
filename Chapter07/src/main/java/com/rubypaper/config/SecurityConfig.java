@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		//로그인 안했으면 로그인 페이지 보여주기
 //		security.formLogin();
 		//사용자 지정 로그인 페이지 
-		security.formLogin().loginPage("/loging").defaultSuccessUrl("/loginSuccess", true);
+		security.formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccess", true);
 	}
 	
 	
