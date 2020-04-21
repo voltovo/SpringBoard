@@ -1,5 +1,7 @@
 package com.rubypaper.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -21,6 +23,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 //		security.formLogin();
 		//사용자 지정 로그인 페이지 
 		security.formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccess", true);
+	}
+	
+	@Autowired
+	public void authenticate(AuthenticationManagerBuilder auth)throws Exception{
+		//사용자 정보 생성(manager)
+		auth.inMemoryAuthentication().withUser("manager").password("{noop}manager123").roles("MANAGER");
+		//사용자 정보 생성(admin)		
+		auth.inMemoryAuthentication().withUser("admin").password("{noop}admin123").roles("ADMIN");
 	}
 	
 	
