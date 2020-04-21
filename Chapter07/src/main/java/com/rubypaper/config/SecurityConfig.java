@@ -23,6 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 //		security.formLogin();
 		//사용자 지정 로그인 페이지 
 		security.formLogin().loginPage("/login").defaultSuccessUrl("/loginSuccess", true);
+		//접근 권한 없을 때 URL 요청
+		security.exceptionHandling().accessDeniedPage("/accessDenied");
 	}
 	
 	@Autowired
