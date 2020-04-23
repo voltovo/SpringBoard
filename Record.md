@@ -14,3 +14,20 @@ Data를 반환해야 하는 경우. @ResponseBody를 활용해서 Json 형태로
 * RestController<br>
 Spring MVC Controller에 @ResponseBody가 추가된것. Json/Xml 형태로 객체 데이터를 반환하는 것이 주용도. java 객체로 전달할 경우 자동으로 Json으로 변환 해서 처리. Restful 웹서비스의 생산을 단순화 하기 위해 만들어짐.<br>
 ![Alt Text](./img/RestController.jpg)<br>
+
+#### memo
+* member 테이블 생성 query
+drop table member;
+
+create table member(
+ID VARCHAR2(10) PRIMARY KEY,
+PASSWORD VARCHAR2(100),
+NAME VARCHAR2(30),
+ROLE VARCHAR(12),
+ENABLED BOOLEAN
+);
+
+insert into member values('member', 'member123', '회원', 'ROLE_MEMBER', TRUE);
+insert into member values('manager', 'manager123', '매니저', 'ROLE_MANAGER', TRUE);
+insert into member values('admin', 'admin123', '어드민', 'ROLE_ADMIN', TRUE);
+
