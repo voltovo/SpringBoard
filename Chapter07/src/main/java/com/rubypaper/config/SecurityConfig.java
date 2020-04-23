@@ -1,5 +1,7 @@
 package com.rubypaper.config;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -8,6 +10,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
+	
+	//데이터 소스 의존성 주입
+	@Autowired
+	private DataSource dataSource;
 
 	@Override
 	protected void configure(HttpSecurity security) throws Exception {
@@ -29,13 +35,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		security.logout().invalidateHttpSession(true).logoutSuccessUrl("/login");
 	}
 	
+	/*
+	 * @Autowired public void authenticate(AuthenticationManagerBuilder auth)throws
+	 * Exception{ //사용자 정보 생성(manager)
+	 * auth.inMemoryAuthentication().withUser("manager").password("{noop}manager123"
+	 * ).roles("MANAGER"); //사용자 정보 생성(admin)
+	 * auth.inMemoryAuthentication().withUser("admin").password("{noop}admin123").
+	 * roles("ADMIN"); }
+	 */
+	//데이터 베이스에 저장된 사용자 정보 인증
 	@Autowired
 	public void authenticate(AuthenticationManagerBuilder auth)throws Exception{
-		//사용자 정보 생성(manager)
-		auth.inMemoryAuthentication().withUser("manager").password("{noop}manager123").roles("MANAGER");
-		//사용자 정보 생성(admin)		
-		auth.inMemoryAuthentication().withUser("admin").password("{noop}admin123").roles("ADMIN");
+		//비밀번호 암호화 미적용 : noop
+		String query1 = "select id username, concat('{noop}', password) password, true enabled from member where id = ?";
+		
+		String query2 = "select id, role from member where id = ?";
+		
+		auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery(query1).authoritiesByUsernameQuery(query2);
+
 	}
-	
 	
 }
