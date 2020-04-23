@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.rubypaper.domain.Member;
 import com.rubypaper.persistence.MemberRepository;
 
+@Service
 public class BoardUserDetailsService implements UserDetailsService {
 	
 	@Autowired
