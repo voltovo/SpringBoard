@@ -16,18 +16,5 @@ Spring MVC Controller에 @ResponseBody가 추가된것. Json/Xml 형태로 객�
 ![Alt Text](./img/RestController.jpg)<br>
 
 #### memo
-* member 테이블 생성 query
-drop table member;
-
-create table member(
-ID VARCHAR2(10) PRIMARY KEY,
-PASSWORD VARCHAR2(100),
-NAME VARCHAR2(30),
-ROLE VARCHAR(12),
-ENABLED BOOLEAN
-);
-
-insert into member values('member', 'member123', '회원', 'ROLE_MEMBER', TRUE);
-insert into member values('manager', 'manager123', '매니저', 'ROLE_MANAGER', TRUE);
-insert into member values('admin', 'admin123', '어드민', 'ROLE_ADMIN', TRUE);
+* enum 찾아보기
 
