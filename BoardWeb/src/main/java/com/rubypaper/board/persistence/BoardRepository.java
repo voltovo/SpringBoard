@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.rubypaper.board.domain.Board;
 
-public interface BoardRepository extends CrudRepository<Board, String>{
+public interface BoardRepository extends CrudRepository<Board, Long>{
 	
 	//글 목록 검색하는 메소드
 	//페이징 처리와 정렬을 위해서 Pageable
