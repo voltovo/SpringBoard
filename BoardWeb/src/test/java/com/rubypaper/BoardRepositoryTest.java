@@ -48,17 +48,26 @@ public class BoardRepositoryTest {
 	 */
 	 
 	
+	/*
+	 * @Test //상세 조회 테스트 public void testGetBoard() {
+	 * 
+	 * Board board = boardRepo.findById(1L).get();
+	 * 
+	 * System.out.println("[ " + board.getSeq() + "번 게시 글 상세 정보 ]");
+	 * System.out.println("제목\t : " + board.getTitle());
+	 * System.out.println("작성자\t : " + board.getMember().getName());
+	 * System.out.println("내용 \t : " + board.getContent());
+	 * System.out.println("등록일\t : " + board.getCreateDate());
+	 * System.out.println("조회수 \t : " + board.getCnt()); }
+	 */
+	
 	@Test
-	//상세 조회 테스트
-	public void testGetBoard() {
+	public void tesGetBoardList() {
+		Member member = memberRepo.findById("admin").get();
 		
-		Board board = boardRepo.findById(1L).get();
-		
-		System.out.println("[ " + board.getSeq() + "번 게시 글 상세 정보 ]");
-		System.out.println("제목\t : " + board.getTitle());
-		System.out.println("작성자\t : " + board.getMember().getName());
-		System.out.println("내용 \t : " + board.getContent());
-		System.out.println("등록일\t : " + board.getCreateDate());
-		System.out.println("조회수 \t : " + board.getCnt());
+		System.out.println("[ " + member.getName() + " 가 등록한 게시글 ]");
+		for (Board board : member.getBoardList()) {
+			System.out.println("---> " + board.toString());
+		}
 	}
 }
