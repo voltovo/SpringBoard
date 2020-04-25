@@ -23,6 +23,7 @@ public class Member {
 	private String password;
 	private String name;
 	
+	//권한 정보를 문자열로 저장하기 위해서 EnumType 설정
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
