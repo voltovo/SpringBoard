@@ -1,10 +1,15 @@
 package com.rubypaper.board.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +17,8 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
+//순환참조 문제를 해결하기 위해서 boardList 는 제외
+@ToString(exclude = "boardList")
 @Entity
 public class Member {
 	
@@ -28,4 +34,10 @@ public class Member {
 	private Role role;
 	
 	private boolean enabled;
+	
+	//일대다(1:N)관계 매핑
+	//member 양방향 매핑에서 주인임을 설정 mappedBy
+	//member가 조회될 때 Board 목록도 조회되게 Fetch
+	@OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
+	private List<Board> boardList = new ArrayList<Board>();
 }
