@@ -24,7 +24,7 @@
 			<td><a th:href="@{/board/getBoard(seq=${board.seq})}"
 				th:text="${board.title}"></a></td>
 			<td th:text="${board.member.name}" th:align="center"></td>
-			<td th:text="${#dates.format(board.createDate, 'yyyy-MM-dd)}"
+			<td th:text="${#dates.format(board.createDate, 'yyyy-MM-dd')}"
 				th:align="center"></td>
 			<td th:text="${board.cnt}" th:align="center"></td>
 		</tr>
