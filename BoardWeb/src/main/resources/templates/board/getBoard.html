@@ -36,7 +36,7 @@
 	</form>
 	<a th:href="@{/board/insertBoard}">글등록</a>&nbsp;&nbsp;&nbsp;
 	<a sec:authorize="hasRole('ROLE_ADMIN')"
-		th:href="@{/board/deleteBoard(seq=${board.seq})}"></a>&nbsp;&nbsp;&nbsp;
+		th:href="@{/board/deleteBoard(seq=${board.seq})}">게시글 삭제</a>&nbsp;&nbsp;&nbsp;
 	<a th:href="@{/board/getBoardList}">글목록</a>
 </body>
 </html>
