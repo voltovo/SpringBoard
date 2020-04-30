@@ -3,11 +3,12 @@ package com.rubypaper.board.persistence;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.CrudRepository;
 
 import com.rubypaper.board.domain.Board;
 
-public interface BoardRepository extends CrudRepository<Board, Long>{
+public interface BoardRepository extends CrudRepository<Board, Long>, QuerydslPredicateExecutor<Board>{
 	
 	//글 목록 검색하는 메소드
 	//페이징 처리와 정렬을 위해서 Pageable
