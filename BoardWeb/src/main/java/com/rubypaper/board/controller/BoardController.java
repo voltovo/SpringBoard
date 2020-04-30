@@ -2,6 +2,7 @@ package com.rubypaper.board.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rubypaper.board.domain.Board;
+import com.rubypaper.board.security.SecurityUser;
 import com.rubypaper.board.service.BoardService;
 
 @Controller
@@ -33,9 +35,16 @@ public class BoardController {
 		return "board/getBoard";
 	}
 	
-	@GetMapping("/insertBoard")
-	public String insertBoardView() {
-		return "board/insertBoard";
+	//글등록 시 Member 엔티티를 Board 엔티티에 설정하기 위해서 수정
+	/*
+	 * @GetMapping("/insertBoard") public String insertBoardView() { return
+	 * "board/insertBoard"; }
+	 */
+	@PostMapping("/insertBoard")
+	public String insertBoard(Board board, @AuthenticationPrincipal SecurityUser principal) {
+		board.setMember(principal.getMember());
+		boardService.insertBoard(board);
+		return "redirect:getBoardList";
 	}
 	
 	@PostMapping("/insertBoard")
