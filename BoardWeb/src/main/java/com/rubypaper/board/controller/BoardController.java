@@ -35,11 +35,12 @@ public class BoardController {
 		return "board/getBoard";
 	}
 	
-	//글등록 시 Member 엔티티를 Board 엔티티에 설정하기 위해서 수정
-	/*
-	 * @GetMapping("/insertBoard") public String insertBoardView() { return
-	 * "board/insertBoard"; }
-	 */
+	
+	@GetMapping("/insertBoard") 
+	public String insertBoardView() { return
+	  "board/insertBoard"; 
+	}
+	 
 	@PostMapping("/insertBoard")
 	public String insertBoard(Board board, @AuthenticationPrincipal SecurityUser principal) {
 		board.setMember(principal.getMember());
@@ -47,11 +48,11 @@ public class BoardController {
 		return "redirect:getBoardList";
 	}
 	
-	@PostMapping("/insertBoard")
-	public String insertBoard(Board board) {
-		boardService.insertBoard(board);
-		return "redirect:getBoardList";
-	}
+	//글등록 시 Member 엔티티를 Board 엔티티에 설정하기 위해서 수정
+	/*
+	 * @PostMapping("/insertBoard") public String insertBoard(Board board) {
+	 * boardService.insertBoard(board); return "redirect:getBoardList"; }
+	 */
 	
 	@GetMapping("/deleteBoard")
 	public String deleteBoard(Board board) {
