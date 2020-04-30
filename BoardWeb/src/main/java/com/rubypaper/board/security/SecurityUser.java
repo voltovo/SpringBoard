@@ -10,8 +10,9 @@ public class SecurityUser extends User{
 	private static final long serialVersionUID = 1L;
 	private Member member;
 	
+	//비번 암호화 추가로 noop 제거
 	public SecurityUser(Member member) {
-		super(member.getId(), "{noop}" + member.getPassword(), 
+		super(member.getId(), member.getPassword(), 
 				AuthorityUtils.createAuthorityList(member.getRole().toString()));
 		this.member = member;
 	}
