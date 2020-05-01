@@ -15,6 +15,17 @@ Data를 반환해야 하는 경우. @ResponseBody를 활용해서 Json 형태로
 Spring MVC Controller에 @ResponseBody가 추가된것. Json/Xml 형태로 객체 데이터를 반환하는 것이 주용도. java 객체로 전달할 경우 자동으로 Json으로 변환 해서 처리. Restful 웹서비스의 생산을 단순화 하기 위해 만들어짐.<br>
 ![Alt Text](./img/RestController.jpg)<br>
 
+#### 1.2 AuthenticationPrincipal 이란?
+spring security가 제공하는 argumentResolver<br>
+로그인한 사용자에 대한 정보를 참조하고 싶을 때, securityUser가 아닌 커스텀 한 principal을 사용할 수 있다.
+<pre>
+@PostMapping("/insertBoard")
+	public String insertBoard(Board board, @AuthenticationPrincipal SecurityUser principal) {
+		board.setMember(principal.getMember());
+		boardService.insertBoard(board);
+		return "redirect:getBoardList";
+	}
+</pre>
 #### memo
 * enum 찾아보기
 
