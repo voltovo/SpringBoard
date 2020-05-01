@@ -172,7 +172,6 @@ TemporalType.TIMESTAMP : 날짜와 시간 모두 출력<br>
 #### 4.2 영속성 컨텍스트 이해하기
 Persistence Context : 논리적인 개념으로, EntityManager를 생성할 때 자동으로 만들어진다. 엔티티 객체들을 관리하는 일종의 컨테이너이다.<br>
 그림과 같이 비영속(New),영속(Managed),준영속(Detached),삭제(Removed)상태로 존재<br>
-![Alt Text](./img/EntityManager.jpg)<br>
 ![Alt Text](./img/EntityStatus.jpg)<br>
 
 |상태|의미|
