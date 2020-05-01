@@ -102,7 +102,7 @@ src/main/resources 를 보면 xml 파일이 아닌 static, templates 폴더가 �
 #### 3.5 project main class run
 src/main/java 소스 폴더에 '프로젝트 이름 + Application.java' 파일이 있다.<br>
 실행시키고 브라우저에 기본포트인 http://localhost:8080/ 을 입력하면 아마도 다음과 같이 뜰 것이다.<br>
-![Alt Text](./img/firstRunPage.jpg)
+![Alt Text](./img/firstRunPage.jpg)<br>
 내장 톰캣이 인식해야 하는 index.html , index.jsp가 없기 때문이다.<br>
 * 프로젝트 생성 시 'web' 스타터를 추가 할 때 웹 프로젝트 환경에 최적화된 라이브러리들을 등록해 준다. 이때 톰캣 라이브러리도 같이 다운된다.<br>
 
