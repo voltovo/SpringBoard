@@ -153,7 +153,7 @@ TemporalType.TIMESTAMP : 날짜와 시간 모두 출력<br>
 ## 4. JPA API 이해
 #### 4.1 EntityManagerFactory와 EntityManager
 * EntityManager : JPA를 이용하는 애플리케이션의 시작은 EntityManager의 생성이다.JPA를 이용해서 CRUD기능을 처리할라면 필요하다. EntityManagerFactory로 부터 얻을 수 있다.<br>
-![Alt Text](./img/EntityManager.jpg);<br>
+![Alt Text](./img/EntityManager.jpg)<br>
 
 1. Persistence 클래스를 이용하여 영속성 유닛(persistence-unit)정보가 저장된 JPA메인 환결설정 파일(persistence.xml)을 로딩한다.
 2. 영속성 유닛(persistence-unit) 설정 정보를 바탕으로 EntityManagerFactory 객체를 생성한다.
@@ -172,7 +172,7 @@ TemporalType.TIMESTAMP : 날짜와 시간 모두 출력<br>
 #### 4.2 영속성 컨텍스트 이해하기
 Persistence Context : 논리적인 개념으로, EntityManager를 생성할 때 자동으로 만들어진다. 엔티티 객체들을 관리하는 일종의 컨테이너이다.<br>
 그림과 같이 비영속(New),영속(Managed),준영속(Detached),삭제(Removed)상태로 존재<br>
-![Alt Text](./img/EntityStatus.jpg);<br>
+![Alt Text](./img/EntityStatus.jpg)<br>
 
 |상태|의미|
 |:--|:--|
