@@ -202,7 +202,7 @@ find() 메소드를 호출했을 때, 조회하고자 하는 엔티티가 영속
 영속성 컨텍스트에서도 제거되고, 테이블의 데이터도 삭제된 상태.<br>
 영속 상태의 엔티티는 remove() 메소드를 이용해서 삭제할 수 있다. 삭제된 엔티티는 재사용하지 않고 가비지 컬렉션이 된다.<br>
 
-##### 4.3 영속성 컨텍스트와 1차 캐시
+#### 4.3 영속성 컨텍스트와 1차 캐시
 EntityManager의 persist()메소드를 통해 특정 엔티티를 영속성 컨텍스트에 등록하면, 저장된 엔티티에 해당하는 INSERT가 실행된다. 그런데 JPA가 곧바로 테이블에 INSERT를 실행하지 않는다. 그 이유는 영속성 컨텍스트 내부에 1차 캐시를 사용해서이다.<br>
 1차 캐시 : 일종의 Map같은 컬렉션이다. Key,Value로 엔티티를 관리한다.<br>
 실제 데이터베이스에 반영 시점 : 1차 캐시에 저장된 엔티티는 EntityTransaction으로 트랜잭션을 종료할 때 반영된다.<br>
@@ -265,7 +265,7 @@ Repository : 기존의 DAO(Data Access Object)와 동일한 개념으로 비즈�
 ![Alt Text](./img/JpaRepository.jpg)<br>
 
 Repository : 기능이 거의 없는 없다 <br>
-CrudRepository : 주로 사용하고, CRUD 기능을 제공
+CrudRepository : 주로 사용하고, CRUD 기능을 제공<br>
 PagingAndSortingRepository : 검색 기능이 필요하고, 검색 결과 화면에 대해 페이징 처리 필요 할 때 사용.<br>
 JpaRepository : 스프링데이터 JPA에서 추가한 기능을 사용하고 싶을 때 사용<br>
 위의 Repository 인터페이스들의 공통점 : 두 개의 제네릭 타입을 지정

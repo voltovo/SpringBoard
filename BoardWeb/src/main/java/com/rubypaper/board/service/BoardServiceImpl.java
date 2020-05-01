@@ -12,7 +12,6 @@ import com.rubypaper.board.domain.Board;
 import com.rubypaper.board.domain.QBoard;
 import com.rubypaper.board.domain.Search;
 import com.rubypaper.board.persistence.BoardRepository;
-import com.rubypaper.board.persistence.MemberRepository;
 
 @Service
 public class BoardServiceImpl implements BoardService{
