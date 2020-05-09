@@ -63,17 +63,35 @@ public enum Role{
 <th>메소드명</th>
 <th>설명</th>
 <tr>
-<td rowspan="3" align="center">Staic<br>Methods</td>
-<td>valueOf(String arg)</td>
+<td rowspan="3" align="center">Static<br>Methods</td>
+<td align="center">valueOf(String arg)</td>
 <td>String 값을 enum에서 가져옴. 값이 없으면 예외 발생</td>
 <tr>
-<td>valueOf(class< T>class, String arg)</td>
+<td align="center">valueOf(class< T>class, String arg)</td>
 <td>넘겨받은 class에서 String찾아, enum에 가져옴<br>valuOf(String arg)는 내부적으로 자기자신 Class를 가져옴</td>
+<tr>
+<td align="center">values()</td>
+<td>eum의 요소들을 순서대로 enum타입의 배열로 리턴.<br>(ENUM$VALUES)의 카피임으로 자주 호출하지 않길</td>
 </tr>
 </tr>
-
+</tr>
+<tr>
+<td rowspan="4" align="center">Static이 아닌<br>Methods</td>
+<td align="center">name()</td>
+<td>호출된 값의 이름을 String으로 리턴</td>
+<tr>
+<td align="center">ordinal()</td>
+<td>해당 값이 enum에 정의된 순서를 리턴</td>
+<tr>
+<td align="center">compareTo(E o)</td>
+<td>enum과 지정된 객체의 순서를 비교.지정된 객체보다 작은 경우<br>음의정수, 동일하면 0, 크면 양수 리턴</td>
+<tr>
+<td align="center">equals(Object other)</td>
+<td>지정된 객체가 enum 정수와 같은 경우, true 리턴</td>
+</tr>
+</tr>
+</tr>
+</tr>
 </table>
-|구분|메소드명|설명|
-|:--|:--|:--|
-|static<br>Methods|valueOf(String arg)|String 값을 enum에서 가져옴.값이 없으면 예외 발생
+
 
