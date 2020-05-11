@@ -14,6 +14,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private SecurityUserDetailsService userDetailsService;
 
+	//시큐리티 설정 커스터마이징
 	@Override
 	public void configure(HttpSecurity security) throws Exception {
 		
