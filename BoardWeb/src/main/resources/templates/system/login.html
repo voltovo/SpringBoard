@@ -6,7 +6,7 @@
 
 <body th:align="center">
 	<h1>로그인</h1>
-	<form method="post">
+	<form th:action="@{/system/login}" method="post">
 		<table th:align="center" border="1" th:cellpadding="0"
 			th:cellspacing="0">
 			<tr>
@@ -19,7 +19,8 @@
 			</tr>
 			<tr>
 				<td colspan="2" th:align="center"><input type="submit"
-					value="로그인"></td>
+					value="로그인">
+					<input type="button" value="메인으로 돌아가기" th:onclick="@{/}"> </td>
 			</tr>
 		</table>
 	</form>
