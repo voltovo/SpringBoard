@@ -6,7 +6,7 @@
 
 <body th:align="center">
 	<h1>회원가입</h1>
-	<form method="post">
+	<form method="post" th:action="@{/member/memberJoin}">
 		<table th:align="center" border="1" th:cellpadding="0"
 			th:cellspacing="0">
 			<tr>
@@ -23,7 +23,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" th:align="center">
-				<input type="button" value="회원가입" th:onclick="@{/member/join}">
+				<input type="submit" value="회원가입">
 					<input type="button" value="메인으로 돌아가기" th:onclick="@{/}"> </td>
 			</tr>
 		</table>
