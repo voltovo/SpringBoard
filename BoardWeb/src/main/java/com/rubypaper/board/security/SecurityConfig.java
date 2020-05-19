@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		security.userDetailsService(userDetailsService);
 		
 		//'/'와 'system' 으로 시작하는 경로에는 인증되지 않은 모든 사용자 접근 가능
-		security.authorizeRequests().antMatchers("/", "/system/**").permitAll();
+		security.authorizeRequests().antMatchers("/", "/system/**","/member/**").permitAll();
 		//'board' 으로 시작하는 경로는 인증된 사용자만 접근 가능
 		security.authorizeRequests().antMatchers("/board/**").authenticated();
 		//'admin' 으로 시작하는 경로는 admin 권한을 가진 사용자만 접근 가능

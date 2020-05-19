@@ -1,5 +1,8 @@
 package com.rubypaper.board.service;
 
-public interface MemberService {
+import com.rubypaper.board.domain.Member;
 
+public interface MemberService {
+	
+	void insertMember(Member member);
 }
