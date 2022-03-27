@@ -1,5 +1,6 @@
 package com.rubypaper;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.rubypaper.board.domain.Board;
 import com.rubypaper.board.domain.Member;
 import com.rubypaper.board.domain.Role;
@@ -52,5 +53,19 @@ public class BoardRepositoryTest {
             board.setContent(member2.getName() + "가 등록한 게시글 " + i);
             boardRepo.save(board);
         }
+    }
+
+    @Test
+    public void testGetBoard(){
+
+        Board board = boardRepo.findById(1L);
+
+        System.out.println("[ " + board.getSeq() + "번 게시글 상세 정보 ]");
+        System.out.println("제목\t : " + board.getTitle());
+        System.out.println("작성자\t : " + board.getMember().getName());
+        System.out.println("내용\t : " + board.getContent());
+        System.out.println("등록일\t : " + board.getCreateDate());
+        System.out.println("조회수\t : " + board.getCnt());
+
     }
 }
