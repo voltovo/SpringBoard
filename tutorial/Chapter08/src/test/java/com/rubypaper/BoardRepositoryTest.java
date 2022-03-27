@@ -58,7 +58,7 @@ public class BoardRepositoryTest {
     @Test
     public void testGetBoard(){
 
-        Board board = boardRepo.findById(1L);
+        Board board = boardRepo.findById(1L).get();
 
         System.out.println("[ " + board.getSeq() + "번 게시글 상세 정보 ]");
         System.out.println("제목\t : " + board.getTitle());
