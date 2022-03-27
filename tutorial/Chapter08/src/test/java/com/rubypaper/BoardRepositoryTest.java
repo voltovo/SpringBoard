@@ -68,4 +68,14 @@ public class BoardRepositoryTest {
         System.out.println("조회수\t : " + board.getCnt());
 
     }
+
+    @Test
+    public void testGetBoardList(){
+        Member member = memberRepo.findById("member").get();
+
+        System.out.println("[ " + member.getName() + "가 등록한 게시글 ]");
+        for (Board board : member.getBoardList()){
+            System.out.println("---> " + board.toString());
+        }
+    }
 }
