@@ -5,10 +5,12 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "boardList")
 @Entity
 public class Member {
     @Id
@@ -19,4 +21,6 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private Role role;
     private boolean enabled;
+    @OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
+    private List<Board> boardList = new ArrayList<Board>();
 }
