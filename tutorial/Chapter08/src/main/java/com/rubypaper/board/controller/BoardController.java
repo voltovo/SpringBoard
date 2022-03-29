@@ -20,4 +20,10 @@ public class BoardController {
         model.addAttribute("boardList", boardList);
         return "board/getBoardList";
     }
+
+    @RequestMapping("/getBoard")
+    public String getBoard(Model model, Board board){
+        model.addAttribute("board", boardService.getBoard(board));
+        return "board/getBoard";
+    }
 }
