@@ -2,8 +2,10 @@ package com.rubypaper.board.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -11,6 +13,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity security) throws Exception{
+
+        security.userDetailsService(userDetailsService);
         //모든 사용자 접근 가능
         security.authorizeRequests().antMatchers("/","/system/**").permitAll();
         //인증된 사용자만 접근 가능
@@ -20,8 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         security.csrf().disable();
         //인증되지 않은 사용자가 /board로 접근하면 로그인 페이지로
-        //로그인 성공하면 /boardList 페이지로
-        security.formLogin().loginPage("/system/login")
+        //로그인 성공하면 /boardList 페이지
+        security.formLogin().loginPage("/system/login").loginProcessingUrl("/system/login")
                 .defaultSuccessUrl("/board/getBoardList", true);
         security.exceptionHandling().accessDeniedPage("/system/accessDenied");
         //로그아웃 요청하면 세션 강제 종료 후 인덱스 페이지로

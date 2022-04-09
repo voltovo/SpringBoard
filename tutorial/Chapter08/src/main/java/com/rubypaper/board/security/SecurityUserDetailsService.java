@@ -19,15 +19,15 @@ public class SecurityUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        Optional<Member> optional = memberRepo.findById(username);
-//        if(!optional.isPresent()){
-//            throw new UsernameNotFoundException(username + "사용자 없음");
-//        }else{
-//            Member member = optional.get();
-//            return new SecurityUser(member);
-//        }
-        Optional<Member> optional = Optional.ofNullable(memberRepo.findById(username))
-                .orElseThrow(() -> new UsernameNotFoundException(username + "사용자 없음"));
-        return new SecurityUser((Member)optional.get());
+        Optional<Member> optional = memberRepo.findById(username);
+        if(!optional.isPresent()){
+            throw new UsernameNotFoundException(username + "사용자 없음");
+        }else{
+            Member member = optional.get();
+            return new SecurityUser(member);
+        }
+//        Optional<Member> optional = Optional.ofNullable(memberRepo.findById(username))
+//                .orElseThrow(() -> new UsernameNotFoundException(username + "사용자 없음"));
+//        return new SecurityUser((Member)optional.get());
     }
 }
