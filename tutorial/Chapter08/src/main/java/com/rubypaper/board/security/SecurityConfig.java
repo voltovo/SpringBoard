@@ -1,9 +1,12 @@
 package com.rubypaper.board.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -31,5 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //로그아웃 요청하면 세션 강제 종료 후 인덱스 페이지로
         security.logout().logoutUrl("/system/logout")
                 .invalidateHttpSession(true).logoutSuccessUrl("/");
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 }
