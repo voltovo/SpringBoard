@@ -41,21 +41,21 @@ public class BoardRepositoryTest {
         member2.setEnabled(true);
         memberRepo.save(member2);
 
-        for (int i = 0; i < 13; i++){
-            Board board = new Board();
-            board.setMember(member1);
-            board.setTitle(member1.getName() + "가 등록한 게시글 " + i);
-            board.setContent(member1.getName() + "가 등록한 게시글 " + i);
-            boardRepo.save(board);
-        }
-
-        for (int i = 0; i < 3; i++){
-            Board board = new Board();
-            board.setMember(member2);
-            board.setTitle(member2.getName() + "가 등록한 게시글 " + i);
-            board.setContent(member2.getName() + "가 등록한 게시글 " + i);
-            boardRepo.save(board);
-        }
+//        for (int i = 0; i < 13; i++){
+//            Board board = new Board();
+//            board.setMember(member1);
+//            board.setTitle(member1.getName() + "가 등록한 게시글 " + i);
+//            board.setContent(member1.getName() + "가 등록한 게시글 " + i);
+//            boardRepo.save(board);
+//        }
+//
+//        for (int i = 0; i < 3; i++){
+//            Board board = new Board();
+//            board.setMember(member2);
+//            board.setTitle(member2.getName() + "가 등록한 게시글 " + i);
+//            board.setContent(member2.getName() + "가 등록한 게시글 " + i);
+//            boardRepo.save(board);
+//        }
     }
 
     @Test
