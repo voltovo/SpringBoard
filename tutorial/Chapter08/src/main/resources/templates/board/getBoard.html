@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <title>게시글 상세</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -42,7 +43,8 @@
     </table>
 </form>
 <a th:href="@{/board/insertBoard}">글 등록</a>&nbsp;&nbsp;&nbsp;
-<a th:href="@{/board/deleteBoard(seq=${board.seq})}">글 삭제</a>&nbsp;&nbsp;&nbsp;
+<a sec:authorize="hasRole('ROLE_ADMIN')"
+   th:href="@{/board/deleteBoard(seq=${board.seq})}">글 삭제</a>&nbsp;&nbsp;&nbsp;
 <a th:href="@{/board/getBoardList}">글 목록</a>
 </body>
 </html>
