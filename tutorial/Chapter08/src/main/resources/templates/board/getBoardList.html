@@ -9,8 +9,7 @@
 <h1>게시글 목록</h1>
 <span sec:authorize="isAuthenticated()">
     <b><font color="red">
-<!--    <span sec:authentication="principal.username"></span>-->
-        <span th:text="${loginUser.name}"></span>
+    <span sec:authentication="principal.member.name"></span>
     </font></b> 님 환영합니다................
     <a th:href="@{/system/logout}">로그 아웃</a>&nbsp;&nbsp;&nbsp;
     <a th:href="@{/admin/adminPage}">게시판 관리</a>
